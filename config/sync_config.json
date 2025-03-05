@@ -1,0 +1,22 @@
+{
+  "server": {
+    "nfs_server": "10.10.1.12",
+    "nfs_share": "/mnt/user/bridger_storage",
+    "mount_point": "/mnt/bridger_storage"
+  },
+  "sync_directories": [
+    {
+      "name": "example_sync",
+      "local_path": "/path/to/local/directory",
+      "remote_path": "example_sync",
+      "include_patterns": ["*"],
+      "exclude_patterns": [".DS_Store", "Thumbs.db", "*.tmp"]
+    }
+  ],
+  "sync_settings": {
+    "sync_interval_minutes": 60,
+    "conflict_resolution": "newest_wins",
+    "preserve_permissions": true,
+    "log_level": "info"
+  }
+}
