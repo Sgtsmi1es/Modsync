@@ -1,9 +1,10 @@
 {
   "server": {
-    "nfs_server": "10.10.1.12",
-    "nfs_share": "/mnt/user/bridger_storage",
+    "nfs_server": "server:/share",
+    "nfs_share": "/mnt/share",
     "mount_point": "/mnt/bridger_storage",
-    "smb_share": "\\\\10.10.1.12\\bridger_storage"
+    "smb_share": "\\\\server\\share",
+    "log_server_url": "http://vm-server:5000"
   },
   "sync_directories": [
     {
