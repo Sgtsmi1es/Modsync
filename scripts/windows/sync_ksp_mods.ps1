@@ -17,14 +17,10 @@ $ExcludeDirs = $Config.sync_directories[0].exclude_directories
 # Function to find Steam installation path
 function Find-SteamPath {
     $PossiblePaths = @(
-        # Default 64-bit path
+        # Default Steam path
         "C:\Program Files (x86)\Steam",
-        # Default 32-bit path
-        "C:\Program Files\Steam",
-        # Registry path for 64-bit Windows
-        (Get-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Valve\Steam" -Name "InstallPath" -ErrorAction SilentlyContinue).InstallPath,
-        # Registry path for 32-bit Windows
-        (Get-ItemProperty -Path "HKLM:\SOFTWARE\Valve\Steam" -Name "InstallPath" -ErrorAction SilentlyContinue).InstallPath
+        # Registry path for Steam
+        (Get-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Valve\Steam" -Name "InstallPath" -ErrorAction SilentlyContinue).InstallPath
     )
 
     foreach ($Path in $PossiblePaths) {
