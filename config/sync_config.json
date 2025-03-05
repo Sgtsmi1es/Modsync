@@ -2,21 +2,35 @@
   "server": {
     "nfs_server": "10.10.1.12",
     "nfs_share": "/mnt/user/bridger_storage",
-    "mount_point": "/mnt/bridger_storage"
+    "mount_point": "/mnt/bridger_storage",
+    "smb_share": "\\\\10.10.1.12\\bridger_storage"
   },
   "sync_directories": [
     {
-      "name": "example_sync",
-      "local_path": "/path/to/local/directory",
-      "remote_path": "example_sync",
+      "name": "ksp_mods",
+      "description": "Kerbal Space Program mods",
+      "windows_path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Kerbal Space Program\\GameData",
+      "mac_path": "/Users/[USERNAME]/Library/Application Support/Steam/steamapps/common/Kerbal Space Program/GameData",
+      "remote_path": "KSP_Mods/GameData",
       "include_patterns": ["*"],
-      "exclude_patterns": [".DS_Store", "Thumbs.db", "*.tmp"]
+      "exclude_patterns": [
+        "Squad/*",
+        "SquadExpansion/*",
+        "*/thumbs.db",
+        "*/.DS_Store",
+        "*/desktop.ini"
+      ],
+      "exclude_directories": [
+        "Squad",
+        "SquadExpansion"
+      ]
     }
   ],
   "sync_settings": {
     "sync_interval_minutes": 60,
     "conflict_resolution": "newest_wins",
     "preserve_permissions": true,
-    "log_level": "info"
+    "log_level": "info",
+    "log_file": "modsync.log"
   }
 }
